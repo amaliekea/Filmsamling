@@ -4,17 +4,17 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         MovieCollection movieliste = new MovieCollection();
-        int userChoiche = 0;
-        int sentinel = 2;
+        int userChoice = 0;
+        int sentinel = 3;
 
-
-        while (userChoiche != sentinel) {
+        while (userChoice != sentinel) {
             System.out.println("Velkommen til min filmsamling!");
             System.out.println("1. Opret en film");
-            System.out.println("2. Afslut");
+            System.out.println("2. Print filmsamlingen");
+            System.out.println("3. Afslut");
 
-            userChoiche = scanner.nextInt();
-            if (userChoiche == 1) {
+            userChoice = scanner.nextInt();
+            if (userChoice == 1) {
 
                 System.out.println("input movie title");
                 String title = scanner.next();
@@ -34,28 +34,20 @@ public class Main {
                 System.out.println("input genre");
                 String genre = scanner.next();
 
-
                 //movie objekt
                 Movie movie1 = new Movie(title, director, year, color, minute, genre);
-
-                //print ud til console
-                System.out.println("Your inserted values:");
-                System.out.println("Title: " + movie1.getTitle());
-                System.out.println("Movie details:" + movie1.getDirector());
-                System.out.println("Year: " + movie1.getYear());
-                System.out.println("color: " + movie1.getColor());
-                System.out.println("Minute: " + movie1.getLengthInMinutes());
-                System.out.println("genre: " + movie1.getGenre());
 
                 //Add movie to collection
                 movieliste.addMovie(title, director, year, color, minute, genre);
 
-
-
-
+            } else if (userChoice==2) {
+                movieliste.printMyCollection();
+            } else if (userChoice == sentinel) {
+                System.out.println("Afsluttet");
             } else {
                 System.out.println("Error, wrong input try again");
-            } break;
+                break;
+            }
         }
     }
 }

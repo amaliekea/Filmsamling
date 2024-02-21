@@ -10,7 +10,7 @@ public class Movie {
         this.title = title;
         this.director = director;
         this.year = year;
-        this.Color = Color;
+        this.Color = isInColor;
         this.lengthInMinutes = lengthInMinutes;
         this.genre = genre;
     }
@@ -37,5 +37,18 @@ public class Movie {
 
     public String getGenre() {
         return genre;
+    }
+    public void printMovie () {
+        System.out.println("The title of the movie: " + this.getTitle());
+        System.out.println("The director of the movie: " + this.getDirector());
+        System.out.println("The year of the movie: " + this.getYear());
+        if (this.getColor()) {
+            System.out.println("The movie is in color");
+        } else {
+            System.out.println("The movie is in black & white");
+        }
+        System.out.println("The movie's length in minutes: " + this.getLengthInMinutes());
+        System.out.println("The genre of the movie: " + this.getGenre());
+        System.out.println("____________________");
     }
 }
