@@ -34,9 +34,6 @@ public class Main {
                 System.out.println("input genre");
                 String genre = scanner.next();
 
-                //movie objekt
-                Movie movie1 = new Movie(title, director, year, color, minute, genre);
-
                 //Add movie to collection
                 movieliste.addMovie(title, director, year, color, minute, genre);
 
