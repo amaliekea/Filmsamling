@@ -38,17 +38,18 @@ public class Movie {
     public String getGenre() {
         return genre;
     }
-    public void printMovie () {
-        System.out.println("The title of the movie: " + this.getTitle());
-        System.out.println("The director of the movie: " + this.getDirector());
-        System.out.println("The year of the movie: " + this.getYear());
+    public String toString() {
+        String farve;
         if (this.getColor()) {
-            System.out.println("The movie is in color");
+            farve = "The movie is in color\n";
         } else {
-            System.out.println("The movie is in black & white");
+            farve = "The movie is in black & white\n";
         }
-        System.out.println("The movie's length in minutes: " + this.getLengthInMinutes());
-        System.out.println("The genre of the movie: " + this.getGenre());
-        System.out.println("____________________");
+        return  "The title of the movie: " + this.getTitle() + "\n" +
+        "The director of the movie: " + this.getDirector() + "\n" +
+        "The year of the movie: " + this.getYear() + "\n" +
+       farve +
+        "The movie's length in minutes: " + this.getLengthInMinutes() + "\n" +
+        "The genre of the movie: " + this.getGenre() + "\n";
     }
 }

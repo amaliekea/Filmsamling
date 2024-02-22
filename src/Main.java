@@ -5,13 +5,14 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         MovieCollection movieliste = new MovieCollection();
         int userChoice = 0;
-        int sentinel = 3;
+        int sentinel = 4;
 
-        while (userChoice != sentinel) {
+        while (userChoice < sentinel) {
             System.out.println("Velkommen til min filmsamling!");
             System.out.println("1. Opret en film");
             System.out.println("2. Print filmsamlingen");
-            System.out.println("3. Afslut");
+            System.out.println("3. Search movie");
+            System.out.println("4. Afslut");
 
             userChoice = scanner.nextInt();
             if (userChoice == 1) {
@@ -25,8 +26,13 @@ public class Main {
                 System.out.println("input yearCreated");
                 int year = scanner.nextInt();
 
-                System.out.println("input true if the movie is in color");
-                boolean color = scanner.nextBoolean();
+                boolean color = false;
+                System.out.println("is the movie in color? yes/no");
+                String erIFarve = scanner.next();
+                erIFarve = erIFarve.toLowerCase();
+                if (erIFarve.equals("yes")) {
+                    color=true;
+                }
 
                 System.out.println("input length in minutes");
                 int minute = scanner.nextInt();
@@ -41,9 +47,10 @@ public class Main {
                 movieliste.printMyCollection();
             } else if (userChoice == sentinel) {
                 System.out.println("Afsluttet");
-            } else {
+            } else if(userChoice==3) {
                 System.out.println("Error, wrong input try again");
-                break;
+            } else {
+                movieliste.searchMovie();
             }
         }
     }
