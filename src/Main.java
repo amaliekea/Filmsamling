@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        MovieCollection movieliste = new MovieCollection();
+        Controller movieController = new Controller();
         int userChoice = 0;
         int sentinel = 4;
 
@@ -16,41 +16,14 @@ public class Main {
 
             userChoice = scanner.nextInt();
             if (userChoice == 1) {
-
-                System.out.println("input movie title");
-                String title = scanner.next();
-
-                System.out.println("input director");
-                String director = scanner.next();
-
-                System.out.println("input yearCreated");
-                int year = scanner.nextInt();
-
-                boolean color = false;
-                System.out.println("is the movie in color? yes/no");
-                String erIFarve = scanner.next();
-                erIFarve = erIFarve.toLowerCase();
-                if (erIFarve.equals("yes")) {
-                    color=true;
-                }
-
-                System.out.println("input length in minutes");
-                int minute = scanner.nextInt();
-
-                System.out.println("input genre");
-                String genre = scanner.next();
-
-                //Add movie to collection
-                movieliste.addMovie(title, director, year, color, minute, genre);
+                movieController.addMovie();
 
             } else if (userChoice==2) {
-                movieliste.printMyCollection();
-            } else if (userChoice == sentinel) {
-                System.out.println("Afsluttet");
+                movieController.liste.printMyCollection();
             } else if(userChoice==3) {
-                System.out.println("Error, wrong input try again");
-            } else {
-                movieliste.searchMovie();
+                movieController.liste.searchMovie();
+            } else if (userChoice >= sentinel) {
+                System.out.println("Afsluttet");
             }
         }
     }
