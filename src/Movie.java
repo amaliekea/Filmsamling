@@ -1,4 +1,4 @@
-public class Movie {
+public class Movie { //movie klasse med private attributter
     private String title;
     private String director;
     private int year;
@@ -7,7 +7,7 @@ public class Movie {
     private String genre;
 
     public Movie(String title, String director, int year, boolean isInColor, int lengthInMinutes, String genre) {
-        this.title = title;
+        this.title = title; //værdierne sættes af konstruktøreren
         this.director = director;
         this.year = year;
         this.Color = isInColor;
@@ -15,7 +15,7 @@ public class Movie {
         this.genre = genre;
     }
 
-    public String getTitle() {
+    public String getTitle() { //værdier ud gennem getter-metoder
         return title;
     }
 
@@ -38,6 +38,7 @@ public class Movie {
     public String getGenre() {
         return genre;
     }
+    @Override
     public String toString() {
         String farve;
         if (this.getColor()) {
