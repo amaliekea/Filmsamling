@@ -23,6 +23,7 @@ public class MovieCollection {
     }
 
     public void printMovie(int i) {
+
         if (i < filmObjekter.size() && i >= 0) {
             System.out.println(filmObjekter.get(i));
 
@@ -36,7 +37,7 @@ public class MovieCollection {
         System.out.println("Search results below:");
         for (Movie m : filmObjekter) { //for hvert movie objekt m i filmobjekter
             if (m.getTitle().toLowerCase().contains(title.toLowerCase())) { //tolowercase for bedre sø
-                count++; //increments coung med 1
+                count++; //increments count med 1
                 System.out.println(m.toString()); //printer movie detaljer
             }
         }
