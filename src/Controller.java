@@ -19,4 +19,10 @@ public class Controller {
     public int searchMovie(String title) {
         return liste.searchMovie(title);
     }
+    public Movie getMovie(int movieNumber) {
+        return liste.getMovie(movieNumber);
+    }
+    public void editMovie (int i, String title, String director, int year, boolean Color, int lengthInMinutes, String genre) {
+        liste.editMovie(i, title, director, year, Color, lengthInMinutes, genre);
+    }
 }

@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-//creater
+//sætter nye værdier ind
 
 public class MovieCollection {
     protected ArrayList<Movie> filmObjekter;
@@ -35,7 +35,7 @@ public class MovieCollection {
     public int searchMovie(String title) {
         int count = 0; //tæller antal fim der opfylder search
         System.out.println("Search results below:");
-        for (Movie m : filmObjekter) { //for hvert movie objekt m i filmobjekter
+        for (Movie m: filmObjekter) { //for hvert movie objekt m i filmobjekter
             if (m.getTitle().toLowerCase().contains(title.toLowerCase())) { //tolowercase for bedre sø
                 count++; //increments count med 1
                 System.out.println(m.toString()); //printer movie detaljer
@@ -47,6 +47,17 @@ public class MovieCollection {
         return count;
     }
 
-
+    public void editMovie(int i, String title, String director, int year, boolean Color, int lengthInMinutes, String genre) {
+        Movie m = filmObjekter.get(i);
+        m.setTitle(title);
+        m.setDirector(director);
+        m.setYear(year);
+        m.setColor(Color);
+        m.setLengthInMinutes(lengthInMinutes);
+        m.setGenre(genre);
+    }
+    public Movie getMovie(int movieNumber) {
+        return filmObjekter.get(movieNumber);
+    }
 }
 

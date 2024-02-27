@@ -1,4 +1,5 @@
 import java.util.Scanner;
+//skaffer brugerinput
 
 public class UserInterface {
     Scanner scanner = new Scanner(System.in);
@@ -74,5 +75,19 @@ public class UserInterface {
         System.out.println("What is the title of the movie you'd wish to search for?");
         String title = scanner.next();
         return title;
+    }
+    public void editMovie () {
+        System.out.println("type the number of the movie you want to edit:");
+        int movieNumber = scanner.nextInt();
+        movieController.printMovie(movieNumber);
+        Movie m = movieController.getMovie(movieNumber);
+        System.out.println("Would you like to edit the title? blank for no edit");
+        String titleEdit = scanner.next();
+        if (!titleEdit.isBlank()) {
+            m.setTitle(titleEdit);
+        } else {
+            titleEdit=m.getTitle();
+        }
+        movieController.editMovie(movieNumber,  titleEdit, director,  year,  Color,  lengthInMinutes,  genre)
     }
 }

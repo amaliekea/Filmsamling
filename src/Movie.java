@@ -38,6 +38,31 @@ public class Movie { //movie klasse med private attributter
     public String getGenre() {
         return genre;
     }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public void setColor(boolean color) {
+        Color = color;
+    }
+
+    public void setLengthInMinutes(int lengthInMinutes) {
+        this.lengthInMinutes = lengthInMinutes;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
     @Override
     public String toString() {
         String farve;
