@@ -4,15 +4,16 @@ import java.util.Scanner;
 public class UserInterface {
     Scanner scanner = new Scanner(System.in);
     Controller movieController = new Controller();
+
     public void startProgram() {
         int userChoice = 0;
-        int sentinel = 5;
+        int sentinel = 6;
 
         while (userChoice < sentinel) {
-           userChoice=movieMenu();
+            userChoice = movieMenu();
 
             if (userChoice == 1) {
-             addMovie();
+                addMovie();
 
             } else if (userChoice == 2) {
                 movieController.printCollection();
@@ -24,12 +25,15 @@ public class UserInterface {
             } else if (userChoice == 4) {
                 String title = getTitle();
                 movieController.searchMovie(title);
+            } else if (userChoice == 5) {
+                editMovie();
 
             } else if (userChoice >= sentinel) {
                 System.out.println("Afsluttet");
             }
         }
     }
+
     private int movieMenu() {
         System.out.println("Velkommen til min filmsamling!");
         System.out.println("1. Opret en film");
@@ -40,6 +44,7 @@ public class UserInterface {
         int userChoice = scanner.nextInt();
         return userChoice;
     }
+
     private void addMovie() {
         System.out.println("input movie title");
         String title = scanner.next();
@@ -66,17 +71,20 @@ public class UserInterface {
 
         movieController.addMovie(title, director, year, color, minute, genre);
     }
+
     private int getMovieNumber() {
         System.out.println("What nr. movie would you like to print?");
         int movieNumber = scanner.nextInt();
         return movieNumber;
     }
+
     private String getTitle() {
         System.out.println("What is the title of the movie you'd wish to search for?");
         String title = scanner.next();
         return title;
     }
-    public void editMovie () {
+
+    public void editMovie() {
         System.out.println("type the number of the movie you want to edit:");
         int movieNumber = scanner.nextInt();
         movieController.printMovie(movieNumber);
@@ -86,8 +94,45 @@ public class UserInterface {
         if (!titleEdit.isBlank()) {
             m.setTitle(titleEdit);
         } else {
-            titleEdit=m.getTitle();
+            titleEdit = m.getTitle();
         }
-        movieController.editMovie(movieNumber,  titleEdit, director,  year,  Color,  lengthInMinutes,  genre)
+        System.out.println("Would you like to edit the director? blank for no edit");
+        String directorEdit = scanner.next();
+        if (!directorEdit.isBlank()) {
+            m.setDirector(directorEdit);
+        } else {
+            directorEdit = m.getDirector();
+        }
+
+        System.out.println("Would you like to edit the year? 0 for no edit");
+        int yearEdit = scanner.nextInt();
+        if (yearEdit != 0) {
+            m.setYear(yearEdit);
+        } else {
+            yearEdit = m.getYear();
+        }
+
+        System.out.println("Would you like to edit the color? true/false for no edit");
+        boolean colorEdit = scanner.nextBoolean();
+        if (colorEdit != m.getColor()) {
+            m.setColor(colorEdit);
+        }
+
+        System.out.println("Would you like to edit the length in minutes? 0 for no edit");
+        int lengthEdit = scanner.nextInt();
+        if (lengthEdit != 0) {
+            m.setLengthInMinutes(lengthEdit);
+        } else {
+            lengthEdit = m.getLengthInMinutes();
+        }
+
+        System.out.println("Would you like to edit the genre? blank for no edit");
+        String genreEdit = scanner.next();
+        if (!genreEdit.isBlank()) {
+            m.setGenre(genreEdit);
+        } else {
+            genreEdit = m.getGenre();
+        }
+        movieController.editMovie(movieNumber, titleEdit, directorEdit, yearEdit, colorEdit, lengthEdit, genreEdit);
     }
 }
