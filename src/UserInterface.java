@@ -40,7 +40,8 @@ public class UserInterface {
         System.out.println("2. Print filmsamlingen");
         System.out.println("3. Print en enkelt film");
         System.out.println("4. Search movie");
-        System.out.println("5. Afslut");
+        System.out.println("5. Edit movie");
+        System.out.println("6. Afslut");
         int userChoice = scanner.nextInt();
         return userChoice;
     }

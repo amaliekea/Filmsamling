@@ -6,8 +6,8 @@ public class MovieCollection {
 
     public MovieCollection() {
         filmObjekter = new ArrayList<>();
-        filmObjekter.add(new Movie("hunger games", "james", 2002, true, 120, "science fiction"));
-        filmObjekter.add(new Movie("harry potter", "harry", 2002, true, 120, "science fiction"));
+        //filmObjekter.add(new Movie("hunger games", "james", 2002, true, 120, "science fiction"));
+        //filmObjekter.add(new Movie("harry potter", "harry", 2002, true, 120, "science fiction"));
     }
 
     public void addMovie(String title, String director, int year, boolean Color, int lengthInMinutes, String genre) {
@@ -58,6 +58,9 @@ public class MovieCollection {
     }
     public Movie getMovie(int movieNumber) {
         return filmObjekter.get(movieNumber);
+    }
+    public ArrayList<Movie> getMovieCollectionList() {
+        return filmObjekter;
     }
 }
 

@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Movie { //movie klasse med private attributter
     private String title;
     private String director;
@@ -77,5 +79,17 @@ public class Movie { //movie klasse med private attributter
        farve +
         "The movie's length in minutes: " + this.getLengthInMinutes() + "\n" +
         "The genre of the movie: " + this.getGenre() + "\n";
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Movie film = (Movie) o;
+        return Objects.equals(title, film.title) &&
+                Objects.equals(director, film.director) &&
+                Objects.equals(year, film.year) &&
+                Objects.equals(Color, film.Color) &&
+                Objects.equals(lengthInMinutes, film.lengthInMinutes) &&
+                Objects.equals(genre, film.genre);
     }
 }

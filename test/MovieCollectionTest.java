@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class MovieCollectionTest {
@@ -9,7 +11,7 @@ class MovieCollectionTest {
     void addMovie() {
         //Arrange - setup our test objects.
         MovieCollection movieCollection = new MovieCollection();
-        movieCollection.addMovie("Hunger Games", "James", 2002, true, 120, "future");
+        movieCollection.addMovie("Rose", "James", 2002, true, 120, "future");
 
         //Act - Execute the method under test with the arranged conditions.
         int expectedMovie = 1;
@@ -21,20 +23,18 @@ class MovieCollectionTest {
     }
 
     @Test
-    void printMyCollection() {
-        //Arrange
-
+    void getMovieCollectionList() {
+        //Arrange - setup our test objects.
         MovieCollection movieCollection = new MovieCollection();
-        movieCollection.addMovie("Hunger Games", "James", 2002, true, 120, "future");
-        movieCollection.addMovie("Titanic", "Nikolaj", 2000, true, 120, "romance");
-        movieCollection.printMyCollection(); //?
-        // Act
-        movieCollection.printMyCollection();
-        int expectedNumberOfMovies = 2;
-        int actualNumberOfMovies = movieCollection.filmObjekter.size();
+        movieCollection.addMovie("Silver", "James", 2002, true, 120, "future");
 
-        // Assert
-        Assertions.assertEquals(expectedNumberOfMovies, actualNumberOfMovies);
+        //Act - Execute the method under test with the arranged conditions.
+        ArrayList<Movie> expectedMovies = new ArrayList<Movie>();
+        expectedMovies.add(new Movie("Silver", "James", 2002, true, 120, "future"));
+        ArrayList<Movie> actualMovies = movieCollection.getMovieCollectionList();
+
+        //Assert -verify the actions's outcome is as expected
+        Assertions.assertArrayEquals(expectedMovies.toArray(), actualMovies.toArray());
     }
 
 }
