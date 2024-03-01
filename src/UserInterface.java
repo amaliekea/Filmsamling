@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 //skaffer brugerinput
 
@@ -53,8 +54,19 @@ public class UserInterface {
         System.out.println("input director");
         String director = scanner.next();
 
-        System.out.println("input yearCreated");
-        int year = scanner.nextInt();
+        System.out.println("input year created");
+        int year = 0;
+        boolean flag = false;
+        while (!flag) {
+            try {
+                year = scanner.nextInt();
+                flag = true;
+            } catch (InputMismatchException first) {
+                System.out.println("fail, try again");
+                System.out.println("Input year created agian");
+                scanner.nextLine();
+            }
+        }
 
         boolean color = false;
         System.out.println("is the movie in color? yes/no");
@@ -65,7 +77,18 @@ public class UserInterface {
         }
 
         System.out.println("input length in minutes");
-        int minute = scanner.nextInt();
+        int minute = 0;
+        boolean flag1 = false;
+        while (!flag1) {
+            try {
+                minute = scanner.nextInt();
+                flag1 = true;
+            } catch (InputMismatchException second) {
+                System.out.println("fail, try again");
+                System.out.println("Input length in minutes agian");
+                scanner.nextLine();
+            }
+        }
 
         System.out.println("input genre");
         String genre = scanner.next();
