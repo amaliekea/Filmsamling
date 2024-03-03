@@ -28,6 +28,8 @@ public class UserInterface {
                 movieController.searchMovie(title);
             } else if (userChoice == 5) {
                 editMovie();
+            } else if (userChoice==6) {
+                remove();
 
             } else if (userChoice >= sentinel) {
                 System.out.println("Afsluttet");
@@ -36,13 +38,14 @@ public class UserInterface {
     }
 
     private int movieMenu() {
-        System.out.println("Velkommen til min filmsamling!");
-        System.out.println("1. Opret en film");
-        System.out.println("2. Print filmsamlingen");
-        System.out.println("3. Print en enkelt film");
+        System.out.println("Welcome to my moviecollection!");
+        System.out.println("1. Create a movie");
+        System.out.println("2. Print the moviecollection");
+        System.out.println("3. Print a single movie");
         System.out.println("4. Search movie");
         System.out.println("5. Edit movie");
-        System.out.println("6. Afslut");
+        System.out.println("6. Remove movie");
+        System.out.println("7. Close");
         int userChoice = scanner.nextInt();
         return userChoice;
     }
@@ -113,50 +116,92 @@ public class UserInterface {
         int movieNumber = scanner.nextInt();
         movieController.printMovie(movieNumber);
         Movie m = movieController.getMovie(movieNumber);
-        System.out.println("Would you like to edit the title? blank for no edit");
-        String titleEdit = scanner.next();
-        if (!titleEdit.isBlank()) {
+
+
+
+        System.out.println("Would you like to edit the title? Enter yes/no");
+        String Edit;
+        String titleEdit = m.getTitle();
+        Edit=scanner.next();
+        scanner.nextLine();
+        if (Edit.equals("yes")) {
+            System.out.println("Enter the new title;");
+            titleEdit = scanner.nextLine();
+            System.out.println("The new title is "+titleEdit);
             m.setTitle(titleEdit);
         } else {
-            titleEdit = m.getTitle();
+            System.out.println("I will keep the title "+m.getTitle());
         }
-        System.out.println("Would you like to edit the director? blank for no edit");
-        String directorEdit = scanner.next();
-        if (!directorEdit.isBlank()) {
+        System.out.println("Would you like to edit the director? Enter yes/no");
+        String directorEdit= m.getDirector();
+        Edit = scanner.nextLine();
+        if (Edit.equals("yes")) {
+            System.out.println("Enter the new director: ");
+            directorEdit = scanner.nextLine();
+            System.out.println("The new director is "+directorEdit);
             m.setDirector(directorEdit);
         } else {
-            directorEdit = m.getDirector();
+            System.out.println("I will keep the director "+m.getDirector());
         }
-
-        System.out.println("Would you like to edit the year? 0 for no edit");
-        int yearEdit = scanner.nextInt();
-        if (yearEdit != 0) {
+        System.out.println("Would you like to edit the year? Enter yes/no");
+        int yearEdit=m.getYear();
+        Edit = scanner.nextLine();
+        if (Edit.equals("yes")) {
+            System.out.println("enter the new year: ");
+            yearEdit = scanner.nextInt();
+            System.out.println("The new year is " + yearEdit);
             m.setYear(yearEdit);
         } else {
-            yearEdit = m.getYear();
+            System.out.println("I will keep the year "+m.getYear());
         }
-
-        System.out.println("Would you like to edit the color? true/false for no edit");
-        boolean colorEdit = scanner.nextBoolean();
-        if (colorEdit != m.getColor()) {
-            m.setColor(colorEdit);
+        System.out.println("Would you like to edit the color? yes/no");
+        Boolean colorEdit= m.getColor();
+        Edit = scanner.nextLine();
+        if(Edit.equals("yes")){
+            System.out.println("Type yes for color, no for black and white");
+            String colorEditString = scanner.nextLine();
+            if (colorEditString.equals("yes")) {
+                m.setColor(true);
+                colorEdit=true;
+                System.out.println("The movie is now in color");
+            } else {
+                m.setColor(false);
+                colorEdit=false;
+                System.out.println("The movie is now in black and white");
+            }
+        } else {
+            System.out.println("I will keep the colorsetting");
+            colorEdit=m.getColor();
         }
-
-        System.out.println("Would you like to edit the length in minutes? 0 for no edit");
-        int lengthEdit = scanner.nextInt();
-        if (lengthEdit != 0) {
+        System.out.println("Would you like to edit the length in minutes? Enter yes/no");
+        int lengthEdit = m.getLengthInMinutes();
+        Edit = scanner.nextLine();
+        if (Edit.equals("yes")) {
+            System.out.println("type the new length in minutes:");
+            lengthEdit = scanner.nextInt();
+            System.out.println("The new length is " + lengthEdit);
             m.setLengthInMinutes(lengthEdit);
         } else {
-            lengthEdit = m.getLengthInMinutes();
+            System.out.println("I will keep the length " + m.getLengthInMinutes() + " minutes long");
         }
 
-        System.out.println("Would you like to edit the genre? blank for no edit");
-        String genreEdit = scanner.next();
-        if (!genreEdit.isBlank()) {
+
+        System.out.println("Would you like to edit the genre? Enter yes/no");
+        String genreEdit=m.getGenre();
+        Edit = scanner.nextLine();
+        if (Edit.equals("yes")) {
+            System.out.println("type the new genre");
+            genreEdit = scanner.nextLine();
+            System.out.println("The new genre is " + genreEdit);
             m.setGenre(genreEdit);
         } else {
-            genreEdit = m.getGenre();
+            System.out.println("I will keep the genre " + m.getGenre());
         }
         movieController.editMovie(movieNumber, titleEdit, directorEdit, yearEdit, colorEdit, lengthEdit, genreEdit);
+    }
+    public void remove() {
+        System.out.println("What is the title of the movie you'd like to remove?");
+        String title = scanner.next();
+        System.out.println(movieController.removeMovie(title));
     }
 }

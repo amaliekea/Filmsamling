@@ -62,5 +62,15 @@ public class MovieCollection {
     public ArrayList<Movie> getMovieCollectionList() {
         return filmObjekter;
     }
+    public String removeMovie(String title) {
+        for (int i = 0; i < filmObjekter.size(); i++) {
+            Movie m = filmObjekter.get(i);
+            if (m.getTitle().equalsIgnoreCase(title)) {
+                filmObjekter.remove(i);
+                return "Movie removed successfully.";
+            }
+        }
+        return "Movie not found.";
+    }
 }
 

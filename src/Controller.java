@@ -9,6 +9,7 @@ public class Controller {
 
     public void addMovie(String title, String director, int year, boolean color, int minute, String genre) {
         liste.addMovie(title, director, year, color, minute, genre);
+        System.out.println("Movie added successfully!");
     }
     public void printCollection() {
         liste.printMyCollection();
@@ -24,5 +25,8 @@ public class Controller {
     }
     public void editMovie (int i, String title, String director, int year, boolean Color, int lengthInMinutes, String genre) {
         liste.editMovie(i, title, director, year, Color, lengthInMinutes, genre);
+    }
+    public String removeMovie(String title) {
+        return liste.removeMovie(title);
     }
 }
